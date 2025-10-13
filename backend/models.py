@@ -1,19 +1,19 @@
- from sqlalchemy import Column, Integer, String, Float, Date
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String, Float, Date, DateTime
+from database import Base
 
-Base = declarative_base()
-
-class Location(Base):
-    __tablename__ = "locations"
+class WeatherRecord(Base):
+    __tablename__ = "weather_records"
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String, nullable=False, index=True)
-    latitude = Column(Float, nullable=False)
-    longitude = Column(Float, nullable=False)
-
-class Weather(Base):
-    __tablename__ = "weather"
-    id = Column(Integer, primary_key=True, index=True)
-    location_id = Column(Integer, index=True)
-    date = Column(Date, nullable=False)
-    description = Column(String)
+    query = Column(String, index=True)
+    location = Column(String)
+    latitude = Column(Float)
+    longitude = Column(Float)
+    date_queried = Column(DateTime)
+    date_from = Column(Date)
+    date_to = Column(Date)
     temperature = Column(Float)
+    details = Column(String)
+    icon_url = Column(String)
+    map_url = Column(String)
+    youtube_url = Column(String)
+ 
